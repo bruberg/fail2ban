@@ -1,0 +1,8 @@
+[http-scanners-traversal]
+port        = 80,443
+logpath     = /var/log/apache*/*.log
+enabled     = true
+findtime    = 5
+maxretry    = 6000
+bantime     = 1
+
