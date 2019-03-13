@@ -1,15 +1,12 @@
 # Fail2Ban filter to match vulnerability scanners looking for directory traversals
-#
 
 [INCLUDES]
 
 [Definition]
-# 172.20.5.196 - - [12/Mar/2019:20:52:18 +0100] "GET /../../../../etc/passwd HTTP/1.1" 400 182 "-" "-"
-# /rubrique.asp?no=....//....//....//....//....//....//....//etc.passwd
 failregex = ^<HOST> \- \S+ \[.*\] \"(GET|POST|HEAD) (\/|%%00|%%c0%%2f|%%c0%%af|%%25%%5c)+.*((\.|%%2e)+(\/|%%00|%%c0%%2f|%%c0%%af|%%25%%5c)+)+.*(\/|%%00|%%c0%%2f|%%c0%%af|%%25%%5c)+(boot\.ini|localstart\.asp|etc(\/|%%00|%%c0%%2f|%%c0%%af|%%25%%5c)(\.(\/|%%00|%%c0%%2f|%%c0%%af|%%25%%5c)+)?(hosts|passwd|shadow))(%%00)?.* HTTP\/\d+\.\d+\" \d+ \d+ .+$
 
 
-ignoreregex = 
+ignoreregex =
 
 datepattern = {^LN-BEG}%%ExY(?P<_sep>[-/.])%%m(?P=_sep)%%d[T ]%%H:%%M:%%S(?:[.,]%%f)?(?:\s*%%z)?
               ^[^\[]*\[({DATE})
